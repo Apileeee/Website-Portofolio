@@ -76,9 +76,12 @@ function createMeteors() {
     meteorContainer.appendChild(meteor);
 
     // Remove meteor after animation
-    setTimeout(() => {
-      meteor.remove();
-    }, (duration + delay) * 1000);
+    setTimeout(
+      () => {
+        meteor.remove();
+      },
+      (duration + delay) * 1000,
+    );
   }
 
   // Create meteors continuously
@@ -114,6 +117,9 @@ function downloadCV() {
 // ==================== Contact Form ====================
 document.addEventListener("DOMContentLoaded", function () {
   const contactForm = document.getElementById("contactForm");
+
+  if (!contactForm) return;
+
   const submitBtn = contactForm.querySelector("button[type='submit']");
 
   contactForm.addEventListener("submit", function (e) {
@@ -142,7 +148,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (data.success) {
           showNotification(
             "Pesan berhasil dikirim! Terima kasih telah menghubungi saya.",
-            "success"
+            "success",
           );
           contactForm.reset();
 
@@ -367,9 +373,9 @@ document.addEventListener("DOMContentLoaded", addUtilityClasses);
 // ==================== Console Message ====================
 console.log(
   "%c🚀 Welcome to Arafil Azmi Portfolio!",
-  "color: #00d4ff; font-size: 16px; font-weight: bold;"
+  "color: #00d4ff; font-size: 16px; font-weight: bold;",
 );
 console.log(
   "%cBuilt with Node.js & Express | Modern Web Development",
-  "color: #0099cc; font-size: 12px;"
+  "color: #0099cc; font-size: 12px;",
 );

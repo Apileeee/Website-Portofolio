@@ -3,133 +3,188 @@ import path from "path";
 import { fileURLToPath } from "url";
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
+import escapeHtml from "escape-html";
+import rateLimit from "express-rate-limit";
 
 dotenv.config();
 
 const app = express();
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Set view engine
+// View engine
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-// Middleware
-app.use(express.static(path.join(__dirname, "public")));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// Security middleware
+app.disable("x-powered-by");
 
-// Routes
+// Body parser dengan limit
+app.use(express.json({ limit: "10kb" }));
+app.use(
+  express.urlencoded({
+    extended: true,
+    limit: "10kb",
+  }),
+);
+
+// Static files
+app.use(express.static(path.join(__dirname, "public")));
+
+// Rate limit contact form
+const contactLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 menit
+  max: 5, // maksimal 5 request
+  message: {
+    success: false,
+    message: "Terlalu banyak percobaan. Coba lagi nanti.",
+  },
+});
+
+// Home
 app.get("/", (req, res) => {
   res.render("index", {
     title: "Arafil Azmi - Web Developer & Data Enthusiast",
   });
 });
 
-// Setup Nodemailer transporter
-const transporter = nodemailer.createTransport({
-  host: "smtp.example.com",
-  port: 587,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASSWORD,
-  },
-});
+// Email transporter
+const transporter =
+  process.env.EMAIL_USER && process.env.EMAIL_PASSWORD
+    ? nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+          user: process.env.EMAIL_USER,
+          pass: process.env.EMAIL_PASSWORD,
+        },
+      })
+    : null;
 
-// API endpoint for contact form
-app.post("/api/contact", async (req, res) => {
+// Contact API
+app.post("/api/contact", contactLimiter, async (req, res) => {
   const { name, email, subject, message } = req.body;
 
-  // Validasi data
+  // Required validation
   if (!name || !email || !subject || !message) {
     return res.status(400).json({
       success: false,
-      message: "Semua field harus diisi!",
+      message: "Semua field harus diisi.",
+    });
+  }
+
+  // Length validation
+  if (
+    name.length > 100 ||
+    email.length > 150 ||
+    subject.length > 150 ||
+    message.length > 3000
+  ) {
+    return res.status(400).json({
+      success: false,
+      message: "Input terlalu panjang.",
+    });
+  }
+
+  // Email validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!emailRegex.test(email)) {
+    return res.status(400).json({
+      success: false,
+      message: "Format email tidak valid.",
     });
   }
 
   try {
-    // Check if email credentials exist
-    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASSWORD) {
-      console.log("Email not configured. Message received:", {
+    // Jika email belum dikonfigurasi
+    if (!transporter) {
+      console.log("Email config missing:", {
         name,
         email,
         subject,
-        message,
       });
+
       return res.json({
         success: true,
-        message: "Pesan diterima! (Email belum dikonfigurasi di server)",
+        message: "Pesan diterima.",
       });
     }
 
-    // Prepare email content
+    const safeName = escapeHtml(name);
+    const safeEmail = escapeHtml(email);
+    const safeSubject = escapeHtml(subject);
+    const safeMessage = escapeHtml(message).replace(/\n/g, "<br>");
+
     const mailOptions = {
       from: process.env.EMAIL_USER,
+
       to: process.env.EMAIL_TO || process.env.EMAIL_USER,
+
+      replyTo: email,
+
       subject: `Portfolio Contact: ${subject}`,
+
       html: `
-        <h2>Pesan Baru dari Portfolio Contact Form</h2>
-        <p><strong>Nama:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Subject:</strong> ${subject}</p>
-        <p><strong>Pesan:</strong></p>
-        <p>${message.replace(/\n/g, "<br>")}</p>
-        <hr>
-        <p style="color: #999; font-size: 12px;">
-          Balas langsung ke email pengirim: ${email}
-        </p>
-      `,
+          <h2>Pesan Baru dari Portfolio</h2>
+
+          <p>
+            <strong>Nama:</strong>
+            ${safeName}
+          </p>
+
+          <p>
+            <strong>Email:</strong>
+            ${safeEmail}
+          </p>
+
+          <p>
+            <strong>Subject:</strong>
+            ${safeSubject}
+          </p>
+
+          <p>
+            <strong>Pesan:</strong>
+          </p>
+
+          <p>
+            ${safeMessage}
+          </p>
+        `,
     };
 
-    // Send email
     await transporter.sendMail(mailOptions);
 
-    console.log(
-      "Email sent to:",
-      process.env.EMAIL_TO || process.env.EMAIL_USER,
-    );
-    console.log("From:", name, `(${email})`);
-
-    res.json({
+    return res.json({
       success: true,
-      message: "Pesan berhasil dikirim!",
+      message: "Pesan berhasil dikirim.",
     });
   } catch (error) {
-    console.error("Error sending email:", error.message);
-    res.status(500).json({
+    console.error("Email error:", error.message);
+
+    return res.status(500).json({
       success: false,
-      message: "Gagal mengirim pesan. Silakan coba lagi.",
+      message: "Terjadi kesalahan saat mengirim pesan.",
     });
   }
 });
 
-// 404 Handler
+// 404
 app.use((req, res) => {
-  res.status(404).render("404", { title: "Page Not Found" });
+  res.status(404).render("404", {
+    title: "Page Not Found",
+  });
 });
 
 // Error handler
 app.use((err, req, res, next) => {
-  console.error(err.stack);
+  console.error(err);
+
   res.status(500).render("error", {
     title: "Server Error",
-    error: err.message,
+    error: "Terjadi kesalahan.",
   });
 });
 
-// Start server
-const PORT = process.env.PORT || 3000;
-// app.listen(PORT, () => {
-//   console.log(`
-//   ╔═══════════════════════════════════════════════════════════╗
-//   ║          🚀 Portfolio Server Running                       ║
-//   ╠═══════════════════════════════════════════════════════════╣
-//   ║  URL: http://localhost:${PORT}                              ║
-//   ║  Mode: ${process.env.NODE_ENV || "development"}                       ║
-//   ║  Press CTRL+C to stop                                     ║
-//   ╚═══════════════════════════════════════════════════════════╝
-//   `);
-// });
-
+// Untuk Vercel
 export default app;
