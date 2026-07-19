@@ -86,7 +86,7 @@ app.post("/api/contact", async (req, res) => {
 
     console.log(
       "Email sent to:",
-      process.env.EMAIL_TO || process.env.EMAIL_USER
+      process.env.EMAIL_TO || process.env.EMAIL_USER,
     );
     console.log("From:", name, `(${email})`);
 
@@ -119,16 +119,16 @@ app.use((err, req, res, next) => {
 
 // Start server
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`
-  ╔═══════════════════════════════════════════════════════════╗
-  ║          🚀 Portfolio Server Running                       ║
-  ╠═══════════════════════════════════════════════════════════╣
-  ║  URL: http://localhost:${PORT}                              ║
-  ║  Mode: ${process.env.NODE_ENV || "development"}                       ║
-  ║  Press CTRL+C to stop                                     ║
-  ╚═══════════════════════════════════════════════════════════╝
-  `);
-});
+// app.listen(PORT, () => {
+//   console.log(`
+//   ╔═══════════════════════════════════════════════════════════╗
+//   ║          🚀 Portfolio Server Running                       ║
+//   ╠═══════════════════════════════════════════════════════════╣
+//   ║  URL: http://localhost:${PORT}                              ║
+//   ║  Mode: ${process.env.NODE_ENV || "development"}                       ║
+//   ║  Press CTRL+C to stop                                     ║
+//   ╚═══════════════════════════════════════════════════════════╝
+//   `);
+// });
 
 export default app;
