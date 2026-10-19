@@ -6,6 +6,14 @@
     <title><%= title %></title>
     <link rel="icon" type="image/x-icon" href="/assets/icontitle.png" />
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
@@ -29,20 +37,26 @@
   </head>
 
   <body>
-    <!-- Meteor Background -->
+    <!-- Meteor & Ambient Glow Background -->
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
     <div class="meteor-container"></div>
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
       <div class="container">
         <a class="navbar-brand" href="#home">
-          <span>Apileee</span>
+          <span class="brand-text">Apileee</span>
+          <span class="brand-dot"></span>
         </a>
         <button
           class="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -53,6 +67,9 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#experience">Experience</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#skills">Skills</a>
@@ -68,39 +85,45 @@
       </div>
     </nav>
 
-    <!-- Home Section -->
+    <!-- Home / Hero Section -->
     <section id="home" class="hero-section">
       <div class="container h-100">
         <div class="row h-100 align-items-center">
-          <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
+          <div class="col-lg-7" data-aos="fade-right" data-aos-duration="1000">
             <div class="hero-content">
+              <div class="hero-badge mb-3">
+                <span class="pulse-indicator"></span>
+                <span>Web Developer &amp; Software Engineer</span>
+              </div>
               <h1 class="hero-title">
-                <span class="text-primary">Halo, Saya Arafil Azmi</span>
+                Halo, Saya <span class="highlight-text">Arafil Azmi</span>
               </h1>
               <p class="hero-subtitle">
-                Full-Stack Web Developer | Data Science & Machine Learning
+                Full-Stack Web Developer | Data Science &amp; Machine Learning
               </p>
               <p class="hero-description">
                 "Everybody in this country should learn how to program a
-                computer, because it teaches you how to think." - Steve Jobs -
+                computer, because it teaches you how to think."
+                <span class="quote-author">— Steve Jobs</span>
               </p>
               <div class="hero-buttons">
                 <button class="btn btn-primary btn-lg" onclick="downloadCV()">
-                  <i class="fas fa-download"></i> Download CV
+                  <i class="fas fa-download me-2"></i> Download CV
                 </button>
                 <a href="#contact" class="btn btn-outline-primary btn-lg">
-                  Hubungi Saya
+                  <i class="fas fa-paper-plane me-2"></i> Hubungi Saya
                 </a>
               </div>
             </div>
           </div>
-          <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000">
+          <div class="col-lg-5" data-aos="fade-left" data-aos-duration="1000">
             <div class="hero-image">
+              <div class="profile-glow-ring"></div>
               <div class="profile-circle">
                 <div class="profile-circle-inner">
                   <img
                     src="/assets/img/profile.jpg"
-                    alt="Profil Saya"
+                    alt="Arafil Azmi"
                     class="profile-photo"
                   />
                 </div>
@@ -114,26 +137,160 @@
     <!-- About Section -->
     <section id="about" class="about-section">
       <div class="container">
-        <div class="section-title" data-aos="fade-up">
+        <div class="section-title text-center" data-aos="fade-up">
+          <span class="section-badge">Profil</span>
           <h2>About Me</h2>
           <div class="title-underline"></div>
         </div>
         <div data-aos="fade-up" data-aos-delay="100">
           <div class="about-box">
+            <div class="about-icon mb-3">
+              <i class="fas fa-terminal"></i>
+            </div>
             <h3>Tentang Saya</h3>
-            <p>
-              Saya adalah seseorang yang memiliki ketertarikan kuat dalam
-              pengembangan solusi digital, khususnya di bidang Full-Stack Web
-              Development dan analisis data. Terbiasa merancang backend yang
-              skalabel, membangun antarmuka front-end yang intuitif, serta
-              mengembangkan aplikasi web secara end-to-end.
+            <p class="text-center">
+              Saya adalah lulusan Informatika dari <strong>Universitas Negeri Padang</strong> dengan fokus kuat pada <strong>Web Development</strong> dan <strong>Software Engineering</strong>. Berpengalaman dalam mengembangkan dan mengelola aplikasi web berskala enterprise, merancang arsitektur backend yang tangguh, integrasi basis data, serta troubleshooting isu teknis secara presisi.
             </p>
-            <p>
-              Saya juga memiliki pemahaman dalam data science, machine learning,
-              dan pemanfaatan AI untuk menghasilkan insight dan solusi
-              prediktif. Saya terus belajar dan berkomitmen menerapkan kemampuan
-              teknis untuk menyelesaikan berbagai permasalahan nyata.
+            <p class="text-center">
+              Memiliki kemampuan analitis dan problem solving yang kuat, diperkaya pemahaman dalam analisis data, machine learning, dan kecerdasan buatan melalui pengerjaan proyek akademik maupun personal. Saya selalu bersemangat untuk berkontribusi pada pengembangan perangkat lunak dunia nyata sambil terus mengasah kapabilitas teknis dan pertumbuhan profesional.
             </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Work Experience Section -->
+    <section id="experience" class="experience-section">
+      <div class="container">
+        <div class="section-title text-center" data-aos="fade-up">
+          <span class="section-badge">Karier &amp; Pengalaman</span>
+          <h2>Work Experience</h2>
+          <div class="title-underline"></div>
+        </div>
+
+        <div class="timeline-container">
+          <!-- Experience 1: KPN Plantations -->
+          <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+            <div class="timeline-marker">
+              <div class="timeline-dot current"></div>
+              <div class="timeline-line"></div>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <div>
+                  <span class="experience-badge current">Current Position</span>
+                  <h4 class="timeline-role">Web Programming Intern</h4>
+                  <h5 class="timeline-company">
+                    <i class="fas fa-building me-2"></i>KPN Plantations
+                  </h5>
+                </div>
+                <div class="timeline-meta">
+                  <span class="meta-item"><i class="far fa-calendar-alt me-1"></i> Aug 2026 - Present</span>
+                  <span class="meta-item"><i class="fas fa-map-marker-alt me-1"></i> Jakarta, Indonesia</span>
+                </div>
+              </div>
+              <ul class="timeline-list">
+                <li>
+                  Mengembangkan dan memelihara fitur <strong>Enterprise GIS</strong> untuk manajemen pengguna, kontrol akses (access control), dan operasional perkebunan.
+                </li>
+                <li>
+                  Mengimplementasikan logika backend dan <strong>SQL Stored Procedures</strong> untuk manajemen akses pengguna dan sinkronisasi status akun.
+                </li>
+                <li>
+                  Mengembangkan dan mengintegrasikan modul konfigurasi <strong>Digital Approval System (DAS)</strong> serta migrasi fitur legacy ke dalam sistem Enterprise GIS.
+                </li>
+                <li>
+                  Melakukan troubleshooting kendala aplikasi dan mengoptimalkan performa pemuatan data, filtering, searching, serta rendering antarmuka.
+                </li>
+                <li>
+                  Melakukan functional testing, integrasi frontend dan backend, serta pengelolaan version control kode secara terstruktur menggunakan <strong>GitHub</strong>.
+                </li>
+              </ul>
+              <div class="timeline-tags">
+                <span class="tech-badge">Enterprise GIS</span>
+                <span class="tech-badge">C# / ASP.NET</span>
+                <span class="tech-badge">SQL Stored Procedures</span>
+                <span class="tech-badge">Digital Approval System</span>
+                <span class="tech-badge">Git &amp; GitHub</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Experience 2: PT Collega Inti Pratama -->
+          <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+            <div class="timeline-marker">
+              <div class="timeline-dot"></div>
+              <div class="timeline-line"></div>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <div>
+                  <span class="experience-badge">Internship</span>
+                  <h4 class="timeline-role">Programmer, Internship</h4>
+                  <h5 class="timeline-company">
+                    <i class="fas fa-building me-2"></i>PT Collega Inti Pratama
+                  </h5>
+                </div>
+                <div class="timeline-meta">
+                  <span class="meta-item"><i class="far fa-calendar-alt me-1"></i> Oct 2024 - Nov 2024</span>
+                  <span class="meta-item"><i class="fas fa-map-marker-alt me-1"></i> Jakarta, Indonesia</span>
+                </div>
+              </div>
+              <ul class="timeline-list">
+                <li>
+                  Berkontribusi dalam pengembangan platform asuransi digital <strong>E-Polis</strong> menggunakan <strong>Vue.js</strong> dan JavaScript.
+                </li>
+                <li>
+                  Mengembangkan <strong>RESTful APIs</strong> menggunakan <strong>Java Spring Boot</strong> dan mengintegrasikan basis data <strong>PostgreSQL</strong>.
+                </li>
+                <li>
+                  Mengintegrasikan komponen frontend dan backend untuk mendukung fungsionalitas aplikasi dan berkolaborasi dalam tim guna merilis fitur yang handal dan teruji.
+                </li>
+              </ul>
+              <div class="timeline-tags">
+                <span class="tech-badge">Vue.js</span>
+                <span class="tech-badge">Java Spring Boot</span>
+                <span class="tech-badge">PostgreSQL</span>
+                <span class="tech-badge">RESTful APIs</span>
+                <span class="tech-badge">E-Polis</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Experience 3: PT Properti Sekuriti Indonesia -->
+          <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
+            <div class="timeline-marker">
+              <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <div>
+                  <span class="experience-badge contract">Contract Employee</span>
+                  <h4 class="timeline-role">Security Systems Engineer</h4>
+                  <h5 class="timeline-company">
+                    <i class="fas fa-building me-2"></i>PT Properti Sekuriti Indonesia
+                  </h5>
+                </div>
+                <div class="timeline-meta">
+                  <span class="meta-item"><i class="far fa-calendar-alt me-1"></i> Dec 2020 - Feb 2021</span>
+                  <span class="meta-item"><i class="fas fa-map-marker-alt me-1"></i> Jakarta, Indonesia</span>
+                </div>
+              </div>
+              <ul class="timeline-list">
+                <li>
+                  Merancang, menginstalasi, dan mengonfigurasi sistem keamanan terpadu termasuk perangkat CCTV dan alarm, serta memastikan performa optimal melalui preventive maintenance rutin.
+                </li>
+                <li>
+                  Mendiagnosis dan memperbaiki gangguan teknis atau malfungsi sistem keamanan secara cepat, sistematis, dan efektif.
+                </li>
+              </ul>
+              <div class="timeline-tags">
+                <span class="tech-badge">Security Systems</span>
+                <span class="tech-badge">CCTV &amp; Alarm Configuration</span>
+                <span class="tech-badge">Diagnostic &amp; Repair</span>
+                <span class="tech-badge">Preventive Maintenance</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -142,158 +299,148 @@
     <!-- Skills Section -->
     <section id="skills" class="skills-section">
       <div class="container">
-        <div class="section-title" data-aos="fade-up">
-          <h2>Skills & Expertise</h2>
+        <div class="section-title text-center" data-aos="fade-up">
+          <span class="section-badge">Keahlian Teknis</span>
+          <h2>Skills &amp; Expertise</h2>
           <div class="title-underline"></div>
         </div>
 
         <!-- Hard Skills -->
-        <div class="row mb-5">
+        <div class="row g-4 mb-5">
           <div class="col-12" data-aos="fade-up">
-            <h4 class="skills-category">Hard Skills</h4>
+            <h4 class="skills-category"><i class="fas fa-layer-group me-2"></i>Technical Capabilities</h4>
           </div>
 
-          <!-- Web Development -->
-          <div class="col-md-6 p-3" data-aos="fade-up" data-aos-delay="100">
-            <div class="skill-category-box">
+          <!-- Frontend Development -->
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="skill-category-box h-100">
               <h5 class="skill-title">
-                <i class="fas fa-globe"></i> Web Development
+                <i class="fas fa-code"></i> Frontend Development
               </h5>
               <div class="skill-tags">
-                <span class="skill-tag">Vue.js</span>
-                <span class="skill-tag">HTML</span>
-                <span class="skill-tag">CSS</span>
+                <span class="skill-tag">HTML5</span>
+                <span class="skill-tag">CSS3</span>
                 <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">Vue.js</span>
+                <span class="skill-tag">React.js</span>
+                <span class="skill-tag">jQuery</span>
                 <span class="skill-tag">Bootstrap</span>
-                <span class="skill-tag">React.js (Basic)</span>
+                <span class="skill-tag">Axios</span>
+                <span class="skill-tag">Async/Await</span>
               </div>
             </div>
           </div>
 
           <!-- Backend Development -->
-          <div class="col-md-6 p-3" data-aos="fade-up" data-aos-delay="200">
-            <div class="skill-category-box">
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="skill-category-box h-100">
               <h5 class="skill-title">
                 <i class="fas fa-server"></i> Backend Development
               </h5>
               <div class="skill-tags">
+                <span class="skill-tag">C#</span>
+                <span class="skill-tag">ASP.NET Web Forms</span>
+                <span class="skill-tag">C# Web Services</span>
+                <span class="skill-tag">Java Spring Boot</span>
                 <span class="skill-tag">Laravel</span>
                 <span class="skill-tag">Node.js</span>
-                <span class="skill-tag">Java Spring Boot</span>
-                <span class="skill-tag">API Development (REST API)</span>
+                <span class="skill-tag">REST API Development</span>
+                <span class="skill-tag">API Integration</span>
                 <span class="skill-tag">API Testing</span>
-                <span class="skill-tag">Authentication & Authorization</span>
-                <span class="skill-tag">Web Deployment & Web Hosting</span>
+                <span class="skill-tag">Input Validation</span>
+                <span class="skill-tag">Authentication &amp; Authorization</span>
+                <span class="skill-tag">CRUD Operations</span>
               </div>
             </div>
           </div>
 
           <!-- Databases -->
-          <div class="col-md-6 p-3" data-aos="fade-up" data-aos-delay="300">
-            <div class="skill-category-box">
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="skill-category-box h-100">
               <h5 class="skill-title">
-                <i class="fas fa-database"></i> Databases
+                <i class="fas fa-database"></i> Databases &amp; SQL
               </h5>
               <div class="skill-tags">
+                <span class="skill-tag">SQL</span>
+                <span class="skill-tag">Stored Procedures</span>
                 <span class="skill-tag">PostgreSQL</span>
                 <span class="skill-tag">MySQL</span>
+                <span class="skill-tag">SQLite</span>
               </div>
             </div>
           </div>
 
           <!-- Programming Languages -->
-          <div class="col-md-6 p-3" data-aos="fade-up" data-aos-delay="400">
-            <div class="skill-category-box">
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="skill-category-box h-100">
               <h5 class="skill-title">
-                <i class="fas fa-code"></i> Programming Languages
+                <i class="fas fa-laptop-code"></i> Programming Languages
               </h5>
               <div class="skill-tags">
                 <span class="skill-tag">Python</span>
                 <span class="skill-tag">Java</span>
+                <span class="skill-tag">C#</span>
                 <span class="skill-tag">C</span>
                 <span class="skill-tag">C++</span>
                 <span class="skill-tag">Go (Basic)</span>
+                <span class="skill-tag">PHP</span>
               </div>
             </div>
           </div>
 
           <!-- Data Science & Machine Learning -->
-          <div class="col-md-6 p-3" data-aos="fade-up" data-aos-delay="500">
-            <div class="skill-category-box">
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="skill-category-box h-100">
               <h5 class="skill-title">
-                <i class="fas fa-brain"></i> Data Science & Machine Learning
+                <i class="fas fa-brain"></i> Data &amp; Machine Learning
               </h5>
               <div class="skill-tags">
                 <span class="skill-tag">Data Analysis</span>
                 <span class="skill-tag">Data Visualization</span>
                 <span class="skill-tag">Data Modeling</span>
                 <span class="skill-tag">Sentiment Analysis</span>
-                <span class="skill-tag">Machine Learning Algorithms</span>
+                <span class="skill-tag">Machine Learning</span>
+                <span class="skill-tag">Google Colab</span>
+                <span class="skill-tag">RStudio</span>
+                <span class="skill-tag">Tableau</span>
+                <span class="skill-tag">Jupyter Notebook</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- DevOps & Tools -->
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="skill-category-box h-100">
+              <h5 class="skill-title">
+                <i class="fas fa-tools"></i> Development &amp; DevOps
+              </h5>
+              <div class="skill-tags">
+                <span class="skill-tag">Git &amp; GitHub</span>
+                <span class="skill-tag">Visual Studio Code</span>
+                <span class="skill-tag">IntelliJ IDEA</span>
+                <span class="skill-tag">Postman</span>
+                <span class="skill-tag">DBeaver</span>
+                <span class="skill-tag">Microsoft Azure App Service</span>
+                <span class="skill-tag">Vercel</span>
+                <span class="skill-tag">Web Deployment &amp; Hosting</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Software Skills -->
-        <div class="row">
-          <div class="col-12" data-aos="fade-up">
-            <h4 class="skills-category">Software Skills</h4>
+        <!-- Soft Skills -->
+        <div class="row g-4" data-aos="fade-up">
+          <div class="col-12">
+            <h4 class="skills-category"><i class="fas fa-user-check me-2"></i>Soft Skills</h4>
           </div>
-
-          <!-- Productivity & Office Tools -->
-          <div class="col-md-6 p-3" data-aos="fade-up" data-aos-delay="100">
-            <div class="skill-category-box">
-              <h5 class="skill-title">
-                <i class="fas fa-briefcase"></i> Productivity & Office Tools
-              </h5>
-              <div class="skill-tags">
-                <span class="skill-tag">Microsoft Word</span>
-                <span class="skill-tag">Excel</span>
-                <span class="skill-tag">Power Point</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Development Tools -->
-          <div class="col-md-6 p-3" data-aos="fade-up" data-aos-delay="200">
-            <div class="skill-category-box">
-              <h5 class="skill-title">
-                <i class="fas fa-tools"></i> Development Tools
-              </h5>
-              <div class="skill-tags">
-                <span class="skill-tag">Visual Studio Code</span>
-                <span class="skill-tag">IntelliJ IDEA</span>
-                <span class="skill-tag">Git & GitHub</span>
-                <span class="skill-tag">Postman</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Data Science Tools -->
-          <div class="col-md-6 p-3" data-aos="fade-up" data-aos-delay="300">
-            <div class="skill-category-box">
-              <h5 class="skill-title">
-                <i class="fas fa-chart-line"></i> Data Science Tools
-              </h5>
-              <div class="skill-tags">
-                <span class="skill-tag">RStudio</span>
-                <span class="skill-tag">Jupyter Notebook</span>
-                <span class="skill-tag">Google Colab</span>
-                <span class="skill-tag">Tableau</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Database Tools -->
-          <div class="col-md-6 p-3" data-aos="fade-up" data-aos-delay="400">
-            <div class="skill-category-box">
-              <h5 class="skill-title">
-                <i class="fas fa-server"></i> Database Tools
-              </h5>
-              <div class="skill-tags">
-                <span class="skill-tag">PostgreSQL</span>
-                <span class="skill-tag">MySQL</span>
-              </div>
+          <div class="col-12">
+            <div class="soft-skills-container">
+              <div class="soft-skill-pill"><i class="fas fa-bolt me-2"></i>Adaptability &amp; Fast Learning</div>
+              <div class="soft-skill-pill"><i class="fas fa-users me-2"></i>Communication &amp; Team Collaboration</div>
+              <div class="soft-skill-pill"><i class="fas fa-award me-2"></i>Hardworking &amp; Dedicated</div>
+              <div class="soft-skill-pill"><i class="fas fa-compass me-2"></i>Leadership</div>
+              <div class="soft-skill-pill"><i class="fas fa-lightbulb me-2"></i>Problem-Solving &amp; Critical Thinking</div>
+              <div class="soft-skill-pill"><i class="fas fa-clock me-2"></i>Time Management</div>
             </div>
           </div>
         </div>
@@ -303,17 +450,66 @@
     <!-- Projects Section -->
     <section id="projects" class="projects-section">
       <div class="container">
-        <div class="section-title" data-aos="fade-up">
+        <div class="section-title text-center" data-aos="fade-up">
+          <span class="section-badge">Karya &amp; Implementasi</span>
           <h2>Featured Projects</h2>
           <div class="title-underline"></div>
         </div>
 
-        <div class="row">
-          <!-- Project 1 -->
+        <!-- Project Filters -->
+        <div class="project-filters text-center mb-5" data-aos="fade-up">
+          <button class="filter-btn active" data-filter="all">All Projects</button>
+          <button class="filter-btn" data-filter="enterprise-web">Enterprise &amp; Web</button>
+          <button class="filter-btn" data-filter="data-ml">Data Science &amp; ML</button>
+        </div>
+
+        <div class="row g-4" id="projectsContainer">
+          <!-- Featured Project 1: Enterprise GIS & DAS (NEW!) -->
           <div
-            class="col-md-6 col-lg-4 mb-4"
+            class="col-md-6 col-lg-4 project-item"
+            data-category="enterprise-web"
             data-aos="fade-up"
             data-aos-delay="100"
+          >
+            <div class="project-card featured-project">
+              <div class="project-image">
+                <img
+                  src="/assets/img/EnterpriseGIS.png"
+                  alt="Enterprise GIS & DAS - KPN Plantations"
+                  class="img-fluid"
+                />
+                <div class="project-overlay">
+                  <div class="project-buttons">
+                    <span class="text-light"><i class="fas fa-lock me-1"></i> Private Repository</span>
+                  </div>
+                </div>
+              </div>
+              <div class="project-info">
+                <div class="project-header">
+                  <h5>Enterprise GIS &amp; Digital Approval System (DAS)</h5>
+                  <span class="badge badge-enterprise">Enterprise</span>
+                </div>
+                <p>
+                  Mengembangkan dan meningkatkan fitur aplikasi enterprise untuk manajemen pengguna, kontrol akses (access control), dan konfigurasi persetujuan digital di <strong>KPN Plantations</strong>. Mengintegrasikan antarmuka frontend, backend services, dan operasi basis data, serta mengoptimalkan performa pemuatan data dan troubleshooting isu teknis.
+                </p>
+                <div class="project-tech">
+                  <span class="tech-badge">C#</span>
+                  <span class="tech-badge">ASP.NET Web Forms</span>
+                  <span class="tech-badge">C# Web Services</span>
+                  <span class="tech-badge">SQL Stored Procedures</span>
+                  <span class="tech-badge">Enterprise GIS</span>
+                  <span class="tech-badge">Git &amp; GitHub</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: Church Scheduling System -->
+          <div
+            class="col-md-6 col-lg-4 project-item"
+            data-category="enterprise-web"
+            data-aos="fade-up"
+            data-aos-delay="150"
           >
             <div class="project-card">
               <div class="project-image">
@@ -327,16 +523,18 @@
                     <a
                       href="http://genetika.skripsian.site/"
                       target="_blank"
+                      rel="noopener noreferrer"
                       class="btn btn-sm btn-light"
                     >
-                      <i class="fas fa-external-link-alt"></i> Demo
+                      <i class="fas fa-external-link-alt me-1"></i> Demo
                     </a>
                     <a
                       href="https://github.com/Apileeee/Management_Gereja"
                       target="_blank"
+                      rel="noopener noreferrer"
                       class="btn btn-sm btn-light"
                     >
-                      <i class="fab fa-github"></i> Code
+                      <i class="fab fa-github me-1"></i> Code
                     </a>
                   </div>
                 </div>
@@ -347,14 +545,11 @@
                   <span class="badge badge-published">Published</span>
                 </div>
                 <p>
-                  Sistem penjadwalan berbasis web menggunakan Laravel yang
-                  mengelola periode pelayanan, instrumen musik, dan personel.
-                  Sistem menerapkan Algoritma Genetika untuk menghasilkan jadwal
-                  otomatis yang optimal dan adil, sehingga proses perencanaan
-                  menjadi lebih efisien dan mudah.
+                  Sistem penjadwalan berbasis web menggunakan Laravel yang mengelola periode pelayanan, instrumen musik, dan personel. Menerapkan Algoritma Genetika untuk menghasilkan jadwal otomatis yang optimal dan adil, sehingga proses perencanaan menjadi lebih efisien.
                 </p>
                 <div class="project-tech">
                   <span class="tech-badge">Laravel</span>
+                  <span class="tech-badge">Genetic Algorithm</span>
                   <span class="tech-badge">MySQL</span>
                   <span class="tech-badge">Bootstrap</span>
                   <span class="tech-badge">PHP</span>
@@ -363,9 +558,10 @@
             </div>
           </div>
 
-          <!-- Project 2 -->
+          <!-- Project 3: Sentiment Analysis Bibit -->
           <div
-            class="col-md-6 col-lg-4 mb-4"
+            class="col-md-6 col-lg-4 project-item"
+            data-category="data-ml"
             data-aos="fade-up"
             data-aos-delay="200"
           >
@@ -373,7 +569,7 @@
               <div class="project-image">
                 <img
                   src="/assets/img/Analisis.png"
-                  alt="Sentiment Analysis"
+                  alt="Sentiment Analysis Bibit"
                   class="img-fluid"
                 />
                 <div class="project-overlay">
@@ -381,9 +577,10 @@
                     <a
                       href="https://github.com/Apileeee/Analisis-Sentimen-Ulasan-Pengguna-Aplikasi-Bibit-Naive-Bayes-dan-KNN-"
                       target="_blank"
+                      rel="noopener noreferrer"
                       class="btn btn-sm btn-light"
                     >
-                      <i class="fab fa-github"></i> Code
+                      <i class="fab fa-github me-1"></i> Code
                     </a>
                   </div>
                 </div>
@@ -391,51 +588,40 @@
               <div class="project-info">
                 <div class="project-header">
                   <h5>Sentiment Analysis of Bibit App Reviews</h5>
-                  <span class="badge badge-not-published">Not Published</span>
+                  <span class="badge badge-not-published">Research / Thesis</span>
                 </div>
                 <p>
-                  Melakukan analisis sentimen terhadap ulasan pengguna aplikasi
-                  investasi Bibit dengan menggunakan algoritma Naïve Bayes dan
-                  K-Nearest Neighbors (KNN). Proyek ini mencakup proses
-                  pembersihan data, ekstraksi fitur, pelatihan model, serta
-                  evaluasi kinerja kedua algoritma untuk menentukan pendekatan
-                  klasifikasi terbaik. Hasil analisis memberikan wawasan
-                  mengenai persepsi pengguna yang dapat mendukung strategi
-                  peningkatan kualitas aplikasi.
+                  Melakukan analisis sentimen terhadap ulasan pengguna aplikasi investasi Bibit menggunakan algoritma Naïve Bayes dan K-Nearest Neighbors (KNN). Mencakup data scraping, text preprocessing, TF-IDF feature extraction, model training, dan visualisasi performa klasifikasi.
                 </p>
                 <div class="project-tech">
                   <span class="tech-badge">Python</span>
-                  <span class="tech-badge">Google Collab</span>
-                  <span class="tech-badge">Data Cleaning</span>
-                  <span class="tech-badge">Data Scraping</span>
-                  <span class="tech-badge">Data Visualization</span>
-                  <span class="tech-badge">TF-IDF</span>
+                  <span class="tech-badge">Naïve Bayes</span>
+                  <span class="tech-badge">KNN</span>
                   <span class="tech-badge">Scikit-learn</span>
-                  <span class="tech-badge">NLTK/Sastrawi</span>
-                  <span class="tech-badge">Sentiment Analysis</span>
-                  <span class="tech-badge">Machine Learning Algorithm</span>
+                  <span class="tech-badge">TF-IDF</span>
+                  <span class="tech-badge">Google Colab</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Project 3 -->
+          <!-- Project 4: E-Polis Insurance System -->
           <div
-            class="col-md-6 col-lg-4 mb-4"
+            class="col-md-6 col-lg-4 project-item"
+            data-category="enterprise-web"
             data-aos="fade-up"
-            data-aos-delay="300"
+            data-aos-delay="250"
           >
             <div class="project-card">
               <div class="project-image">
                 <img
                   src="/assets/img/Epolis.png"
-                  alt="E-Polis"
+                  alt="E-Polis Insurance System"
                   class="img-fluid"
                 />
                 <div class="project-overlay">
                   <div class="project-buttons">
-                    <!-- Private Code - No buttons shown -->
-                    <span class="text-light">Code tidak tersedia</span>
+                    <span class="text-light"><i class="fas fa-lock me-1"></i> Private Repository</span>
                   </div>
                 </div>
               </div>
@@ -445,37 +631,31 @@
                   <span class="badge badge-private">Private Code</span>
                 </div>
                 <p>
-                  Sistem E-Polis adalah aplikasi web full-stack untuk
-                  pengelolaan polis asuransi digital. Aplikasi ini dibangun
-                  menggunakan Vue.js untuk tampilan antarmuka, Java Spring Boot
-                  untuk backend, dan PostgreSQL sebagai basis data. Sistem ini
-                  dilengkapi integrasi API, pengelolaan data polis, serta fitur
-                  keamanan yang memastikan proses berjalan stabil, aman, dan
-                  dapat diskalakan.
+                  Aplikasi web full-stack untuk pengelolaan polis asuransi digital di <strong>PT Collega Inti Pratama</strong>. Dibangun menggunakan Vue.js untuk antarmuka pengguna, Java Spring Boot untuk backend REST API, dan basis data PostgreSQL dengan sistem autentikasi teruji.
                 </p>
                 <div class="project-tech">
                   <span class="tech-badge">Vue.js</span>
                   <span class="tech-badge">Java Spring Boot</span>
                   <span class="tech-badge">PostgreSQL</span>
                   <span class="tech-badge">REST API</span>
-                  <span class="tech-badge">Authentication & Authorization</span>
-                  <span class="tech-badge">API Integration</span>
+                  <span class="tech-badge">Authentication</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Project 4 -->
+          <!-- Project 5: Web Inventory BPS -->
           <div
-            class="col-md-6 col-lg-4 mb-4"
+            class="col-md-6 col-lg-4 project-item"
+            data-category="enterprise-web"
             data-aos="fade-up"
-            data-aos-delay="400"
+            data-aos-delay="300"
           >
             <div class="project-card">
               <div class="project-image">
                 <img
                   src="/assets/img/Bps.png"
-                  alt="Web Inventory"
+                  alt="Web Inventory BPS"
                   class="img-fluid"
                 />
                 <div class="project-overlay">
@@ -483,9 +663,10 @@
                     <a
                       href="https://github.com/Apileeee/InventarisWeb-BPS"
                       target="_blank"
+                      rel="noopener noreferrer"
                       class="btn btn-sm btn-light"
                     >
-                      <i class="fab fa-github"></i> Code
+                      <i class="fab fa-github me-1"></i> Code
                     </a>
                   </div>
                 </div>
@@ -493,36 +674,28 @@
               <div class="project-info">
                 <div class="project-header">
                   <h5>Web Inventory - BPS</h5>
-                  <span class="badge badge-not-published">Not Published</span>
+                  <span class="badge badge-not-published">Simulation</span>
                 </div>
                 <p>
-                  InventarisWeb-BPS adalah aplikasi simulasi sistem inventory
-                  berbasis web yang dirancang untuk membantu pengelolaan stok
-                  barang di Badan Pusat Statistik (BPS). Aplikasi ini
-                  memungkinkan admin dan karyawan untuk melakukan pencatatan
-                  barang, pembaruan stok, pencarian inventaris, serta pemantauan
-                  data secara real-time. Sistem dibangun menggunakan PHP Native
-                  dan MySQL, sehingga ringan, mudah dipahami, dan cocok sebagai
-                  simulasi sistem inventory skala kecil.
+                  Aplikasi simulasi sistem inventaris barang berbasis web untuk Badan Pusat Statistik (BPS). Memungkinkan admin dan staf melakukan pencatatan barang, pembaruan stok real-time, pencarian data cepat, dan laporan inventaris dengan antarmuka yang ramah pengguna.
                 </p>
                 <div class="project-tech">
                   <span class="tech-badge">PHP Native</span>
-                  <span class="tech-badge">HTML</span>
-                  <span class="tech-badge">CSS</span>
-                  <span class="tech-badge">JavaScript</span>
                   <span class="tech-badge">MySQL</span>
+                  <span class="tech-badge">JavaScript</span>
                   <span class="tech-badge">CRUD Operations</span>
-                  <span class="tech-badge">Authentication</span>
+                  <span class="tech-badge">Bootstrap</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Project 5 -->
+          <!-- Project 6: Weather App -->
           <div
-            class="col-md-6 col-lg-4 mb-4"
+            class="col-md-6 col-lg-4 project-item"
+            data-category="enterprise-web"
             data-aos="fade-up"
-            data-aos-delay="500"
+            data-aos-delay="350"
           >
             <div class="project-card">
               <div class="project-image">
@@ -536,9 +709,10 @@
                     <a
                       href="https://github.com/Apileeee/AplikasiCuaca"
                       target="_blank"
+                      rel="noopener noreferrer"
                       class="btn btn-sm btn-light"
                     >
-                      <i class="fab fa-github"></i> Code
+                      <i class="fab fa-github me-1"></i> Code
                     </a>
                   </div>
                 </div>
@@ -546,36 +720,34 @@
               <div class="project-info">
                 <div class="project-header">
                   <h5>Weather App</h5>
-                  <span class="badge badge-not-published">Not Published</span>
+                  <span class="badge badge-not-published">Personal Project</span>
                 </div>
                 <p>
-                  Aplikasi cuaca sederhana berbasis Node.js yang menampilkan
-                  informasi cuaca real-time. Pengguna memasukkan lokasi secara
-                  manual, kemudian aplikasi mengambil data cuaca melalui Weather
-                  API dan menampilkannya dalam format yang mudah dipahami.
+                  Aplikasi cuaca interaktif berbasis Node.js dan Express yang menampilkan prakiraan cuaca real-time. Terintegrasi dengan OpenWeather API dan IP Location API untuk mendeteksi cuaca berdasarkan koordinat maupun pencarian nama kota pengguna secara akurat.
                 </p>
                 <div class="project-tech">
                   <span class="tech-badge">Node.js</span>
                   <span class="tech-badge">Express</span>
                   <span class="tech-badge">Weather API</span>
-                  <span class="tech-badge">CSS</span>
                   <span class="tech-badge">JavaScript</span>
+                  <span class="tech-badge">CSS3</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Project 6 -->
+          <!-- Project 7: Coffee Shop Management System -->
           <div
-            class="col-md-6 col-lg-4 mb-4"
+            class="col-md-6 col-lg-4 project-item"
+            data-category="enterprise-web"
             data-aos="fade-up"
-            data-aos-delay="600"
+            data-aos-delay="400"
           >
             <div class="project-card">
               <div class="project-image">
                 <img
                   src="/assets/img/Coffee.png"
-                  alt="Coffee App"
+                  alt="Coffee Shop Management System"
                   class="img-fluid"
                 />
                 <div class="project-overlay">
@@ -583,9 +755,10 @@
                     <a
                       href="https://github.com/Apileeee/Coffee-Shop-Management-System-Web-Application-"
                       target="_blank"
+                      rel="noopener noreferrer"
                       class="btn btn-sm btn-light"
                     >
-                      <i class="fab fa-github"></i> Code
+                      <i class="fab fa-github me-1"></i> Code
                     </a>
                   </div>
                 </div>
@@ -593,22 +766,16 @@
               <div class="project-info">
                 <div class="project-header">
                   <h5>Coffee Shop Management System</h5>
-                  <span class="badge badge-not-published">Not Published</span>
+                  <span class="badge badge-not-published">Web App</span>
                 </div>
                 <p>
-                  Sistem manajemen berbasis web untuk mengelola operasional
-                  coffee shop, mulai dari menu, pesanan, hingga transaksi.
-                  Dikembangkan menggunakan PHP dan Bootstrap untuk memastikan
-                  tampilan yang responsif dan penggunaan yang mudah oleh admin
-                  maupun kasir.
+                  Sistem manajemen operasional coffee shop berbasis web untuk pengelolaan katalog menu, pemesanan kasir, manajemen stok bahan, dan rekonsiliasi transaksi penjualan harian dengan antarmuka kasir yang responsif dan ringkas.
                 </p>
                 <div class="project-tech">
-                  <span class="tech-badge">PHP Native</span>
-                  <span class="tech-badge">HTML</span>
-                  <span class="tech-badge">Bootstrap</span>
-                  <span class="tech-badge">CSS</span>
-                  <span class="tech-badge">JavaScript</span>
+                  <span class="tech-badge">PHP</span>
                   <span class="tech-badge">MySQL</span>
+                  <span class="tech-badge">Bootstrap</span>
+                  <span class="tech-badge">JavaScript</span>
                 </div>
               </div>
             </div>
@@ -620,65 +787,123 @@
     <!-- Contact Section -->
     <section id="contact" class="contact-section">
       <div class="container">
-        <div class="section-title" data-aos="fade-up">
+        <div class="section-title text-center" data-aos="fade-up">
+          <span class="section-badge">Hubungi Saya</span>
           <h2>Get In Touch</h2>
           <div class="title-underline"></div>
         </div>
 
-        <div class="row justify-content-center">
-          <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
-            <form id="contactForm" class="contact-form">
-              <div class="mb-3">
-                <label for="name" class="form-label">Nama</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="name"
-                  name="name"
-                  required
-                />
+        <div class="row g-4 justify-content-center">
+          <div class="col-lg-4" data-aos="fade-right" data-aos-delay="100">
+            <div class="contact-info-card h-100">
+              <h4>Mari Berdiskusi!</h4>
+              <p class="text-white mb-4">
+                Saya selalu terbuka untuk peluang kerja, kolaborasi proyek pengembangan web, maupun diskusi teknologi. Jangan ragu untuk menyapa!
+              </p>
+              
+              <div class="contact-detail-item">
+                <div class="contact-icon-box">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div>
+                  <span class="contact-label">Email</span>
+                  <a href="mailto:rafiazmi0812@gmail.com" class="contact-link">rafiazmi0812@gmail.com</a>
+                </div>
               </div>
 
-              <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  id="email"
-                  name="email"
-                  required
-                />
+              <div class="contact-detail-item">
+                <div class="contact-icon-box">
+                  <i class="fab fa-linkedin-in"></i>
+                </div>
+                <div>
+                  <span class="contact-label">LinkedIn</span>
+                  <a href="https://www.linkedin.com/in/arafil-azmi-5b3605323/" target="_blank" rel="noopener noreferrer" class="contact-link">Arafil Azmi</a>
+                </div>
               </div>
 
-              <div class="mb-3">
-                <label for="subject" class="form-label">Subject</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="subject"
-                  name="subject"
-                  required
-                />
+              <div class="contact-detail-item">
+                <div class="contact-icon-box">
+                  <i class="fab fa-github"></i>
+                </div>
+                <div>
+                  <span class="contact-label">GitHub</span>
+                  <a href="https://github.com/Apileeee" target="_blank" rel="noopener noreferrer" class="contact-link">github.com/Apileeee</a>
+                </div>
               </div>
 
-              <div class="mb-3">
-                <label for="message" class="form-label">Pesan</label>
-                <textarea
-                  class="form-control"
-                  id="message"
-                  name="message"
-                  rows="5"
-                  required
-                ></textarea>
+              <div class="contact-detail-item">
+                <div class="contact-icon-box">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div>
+                  <span class="contact-label">Lokasi</span>
+                  <span class="contact-text">Jakarta, Indonesia</span>
+                </div>
               </div>
+            </div>
+          </div>
 
-              <button type="submit" class="btn btn-primary btn-lg w-100">
-                <i class="fas fa-paper-plane"></i> Kirim Pesan
-              </button>
-            </form>
+          <div class="col-lg-8" data-aos="fade-left" data-aos-delay="200">
+            <div class="contact-form-wrapper">
+              <form id="contactForm" class="contact-form">
+                <div class="row g-3">
+                  <div class="col-md-6 mb-3">
+                    <label for="name" class="form-label">Nama Lengkap</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="name"
+                      name="name"
+                      placeholder="Masukkan nama Anda"
+                      required
+                    />
+                  </div>
 
-            <!-- Placeholder Notifikasi -->
-            <div id="form-status" class="mt-3 text-center"></div>
+                  <div class="col-md-6 mb-3">
+                    <label for="email" class="form-label">Alamat Email</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="email"
+                      name="email"
+                      placeholder="nama@domain.com"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="subject" class="form-label">Subjek</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="subject"
+                    name="subject"
+                    placeholder="Contoh: Diskusi Proyek Web / Peluang Kerja"
+                    required
+                  />
+                </div>
+
+                <div class="mb-3">
+                  <label for="message" class="form-label">Pesan</label>
+                  <textarea
+                    class="form-control"
+                    id="message"
+                    name="message"
+                    rows="5"
+                    placeholder="Tuliskan pesan Anda di sini..."
+                    required
+                  ></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-lg w-100">
+                  <i class="fas fa-paper-plane me-2"></i> Kirim Pesan
+                </button>
+              </form>
+
+              <!-- Placeholder Notifikasi -->
+              <div id="form-status" class="mt-3 text-center"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -690,8 +915,8 @@
         <div class="row align-items-center py-4">
           <!-- Left Section - Branding -->
           <div class="col-md-4 text-md-start text-center mb-3 mb-md-0">
-            <h5>Apileee</h5>
-            <p class="footer-subtitle">Web Developer & Data Enthusiast</p>
+            <h5 class="footer-brand">Apileee</h5>
+            <p class="footer-subtitle">Web Developer &amp; Software Engineer</p>
           </div>
 
           <!-- Center Section - Quick Links -->
@@ -699,13 +924,15 @@
             <h6 class="footer-title">Quick Links</h6>
             <ul class="footer-links">
               <li><a href="#about">About</a></li>
+              <li><a href="#experience">Experience</a></li>
               <li><a href="#skills">Skills</a></li>
               <li><a href="#projects">Projects</a></li>
+              <li><a href="#contact">Contact</a></li>
             </ul>
           </div>
 
           <!-- Right Section - Social Media -->
-          <div class="col-md-4 text-center">
+          <div class="col-md-4 text-md-end text-center">
             <h6 class="footer-title">Connect With Me</h6>
             <div class="footer-social">
               <a
@@ -718,6 +945,7 @@
               <a
                 href="https://github.com/Apileeee"
                 target="_blank"
+                rel="noopener noreferrer"
                 class="footer-icon"
                 title="GitHub"
               >
@@ -726,6 +954,7 @@
               <a
                 href="https://www.linkedin.com/in/arafil-azmi-5b3605323/"
                 target="_blank"
+                rel="noopener noreferrer"
                 class="footer-icon"
                 title="LinkedIn"
               >
@@ -734,6 +963,7 @@
               <a
                 href="https://www.instagram.com/arafilazmi"
                 target="_blank"
+                rel="noopener noreferrer"
                 class="footer-icon"
                 title="Instagram"
               >
@@ -747,7 +977,7 @@
         <div class="footer-bottom">
           <div class="text-center">
             <p class="footer-copyright">
-              &copy; 2025 Arafil Azmi . All rights reserved.
+              &copy; 2026 Arafil Azmi. All rights reserved.
             </p>
           </div>
         </div>

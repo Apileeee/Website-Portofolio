@@ -186,5 +186,13 @@ app.use((err, req, res, next) => {
   });
 });
 
+// Port listener (Local & Azure)
+const PORT = process.env.PORT || 3000;
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`🚀 Portfolio server running on http://localhost:${PORT}`);
+  });
+}
+
 // Untuk Vercel
 export default app;
